@@ -1,12 +1,15 @@
 const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
+
 const routerProjects = require("./routers/routerProjects");
 const routerActions = require("./routers/routerActions");
-const cors = require("cors");
 
 const server = express();
 
-server.use(express.json());
 server.use(cors());
+server.use(express.json());
+server.use(helmet());
 
 server.use("/api/projects", routerProjects);
 server.use("/api/actions", routerActions);
