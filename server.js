@@ -8,7 +8,17 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
-server.use("/projects", routerProjects);
-server.use("/actions", routerActions);
+server.use("/api/projects", routerProjects);
+server.use("/api/actions", routerActions);
+
+server.get("/", (req, res) => {
+  console.log("Project server running.");
+  res.send("<h1>Project Server Base</h1>");
+});
+
+server.get("/api", (req, res) => {
+  console.log("Project server running.");
+  res.send("<h1>Project Server API</h1>");
+});
 
 module.exports = server;
